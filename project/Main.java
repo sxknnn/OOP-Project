@@ -20,29 +20,36 @@ class FirstLevel
 		Random r1 = new Random();
 		int randomNumber = r1.nextInt(10) + 1; 
 		int guess;
+		int attempts= 5;
 		System.out.println("\nThis is the first level. Before you proceed any further, complete this level. ");
-		do 
+		
+		while (attempts > 0) 
 		{
-			
-			System.out.print("\nGuess the number (1-10): ");
-			guess = in.nextInt();
-			if (guess < randomNumber)
-			{
-				System.out.println("Too low! Try again.");
-			} 
-			else if (guess > randomNumber) 
-			{
-				System.out.println("Too high! Try again.");
-			} 
-			else
-			{
-				System.out.println("\nCongratulations! You guessed the number.");
-				System.out.println("You may proceed to the next level.");
-			}
-			}
-		while (guess != randomNumber);
+            System.out.print("\nGuess the number (1-10): ");
+            guess = in.nextInt();
 
-	}
+            if (guess < randomNumber) 
+            {
+                System.out.println("Too low! Try again.");
+            } 
+            else if (guess > randomNumber) 
+            {
+                System.out.println("Too high! Try again.");
+            }
+            else 
+            {
+                System.out.println("\nCongratulations! You guessed the number.");
+                System.out.println("You may proceed to the next level.");
+                return; // exit the method if the guess is correct
+            }
+
+            attempts--;
+            System.out.println("You have " + attempts + " attempts left.");
+        }
+
+        System.out.println("You ran out of attempts. You failed this level.");
+    }
+	
 }
 
 class SecondLevel
